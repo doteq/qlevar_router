@@ -9,6 +9,9 @@ class QObserver {
 
   /// Add listener to every route that will be deleted from the tree
   final onPop = <Future Function(String, QRoute)>[];
+
+  /// Add listener to currently top route after deleting route from the tree
+  final onPopped = <Future Function(String, QRoute)>[];
 }
 
 class QNavigatorObserver extends NavigatorObserver {

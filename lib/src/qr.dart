@@ -291,6 +291,7 @@ class QRContext {
     treeInfo.namePath.clear();
     observer.onNavigate.clear();
     observer.onPop.clear();
+    observer.onPopped.clear();
     treeInfo.namePath[rootRouterName] = '/';
     treeInfo.routeIndexer = -1;
     settings.reset();

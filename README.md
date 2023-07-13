@@ -353,6 +353,7 @@ QObserver can have :
 
 - **onNavigate**: add listener to every new route that will be added to the tree
 - **onPop**: Add listener to every route that will be deleted from the tree
+- **onPopped**: Add listener to currently top route after deleting route from the tree
 
 ## Not found page
 

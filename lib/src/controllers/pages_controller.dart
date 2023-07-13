@@ -53,6 +53,9 @@ class PagesController {
     await _notifyObserverOnPop(route);
     routes.removeLast(); // remove from the routes
     pages.removeLast(); // remove from the pages
+    if (routes.isNotEmpty) {
+      await _notifyObserverOnPopped(routes.last);
+    }
     _checkEmptyStack();
     return PopResult.Popped;
   }
@@ -70,6 +73,9 @@ class PagesController {
     await _notifyObserverOnPop(route);
     routes.removeAt(index); // remove from the routes
     pages.removeAt(index); // remove from the pages
+    if (routes.isNotEmpty) {
+      await _notifyObserverOnPopped(routes.last);
+    }
     _checkEmptyStack();
     return true;
   }
@@ -94,6 +100,12 @@ class PagesController {
   Future _notifyObserverOnPop(QRouteInternal route) async {
     for (var onPop in QR.observer.onPop) {
       await onPop(route.activePath!, route.route);
+    }
+  }
+
+  Future _notifyObserverOnPopped(QRouteInternal route) async {
+    for (var onPopped in QR.observer.onPopped) {
+      await onPopped(route.activePath!, route.route);
     }
   }
 
